@@ -32,6 +32,13 @@ int Length(char *s){
     }
     return count;
 }
+
+/**
+ * the function checks if word is similar to the original string
+ * @param original_String
+ * @param word
+ * @return 1 if similar, 0 otherwise
+ */
 int similar(char *original_String, char *word) {
     if (Length(original_String) < Length(word))
         return 0;
@@ -44,6 +51,10 @@ int similar(char *original_String, char *word) {
             original_String++;
         }
     }
+    if (*original_String == '\0' && *word == '\0')
+        return 1;
+    return 0;
+
 }
 
 
@@ -60,10 +71,10 @@ void print_lines(char *word){
 /**
  * The function will print the similar words of the string word
  */
-void print_similar_words(char *keyWord) {
+void print_similar_words(char *word) {
     char text[LINE];
     while (scanf("%s", text) != EOF) {
-        if (similar(text, keyWord) || substring(text, keyWord))
+        if (similar(text, word) || substring(text, word))
             printf("%s\n", text);
     }
 }
