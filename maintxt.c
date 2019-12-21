@@ -5,18 +5,21 @@
 #include "txtfind.h"
 
 int main() {
-    char firstLine[LINE];
-    char keyWord[WORD];
-    char chooseLetter;
-    char *firstLinePTR = firstLine;
-    char *keyWordPTR = keyWord;
-    scanf("%[^\n]s", firstLine);
+    char first_line[LINE] , word[WORD];
+    char letter;
+    char *first_line_ptr = first_line;
+    char *word_ptr = word;
+    scanf("%[^\n]s", first_line);
 
-    while (*firstLinePTR != ' ') *(keyWordPTR++) = *(firstLinePTR++);
-    chooseLetter = *(++firstLinePTR);
-    *keyWordPTR = '\0';
+    while (*first_line_ptr != ' ') {
+        *(word_ptr++) = *(first_line_ptr++);
+    }
+    letter = *(++first_line_ptr);
+    *word_ptr = '\0';
 
-    scanf("%s", firstLine);
-    if (chooseLetter == 'a') print_lines(keyWord);
-    else print_similar_words(keyWord);
+    scanf("%s", first_line);
+    if (letter == 'a')
+        print_lines(word);
+    else
+        print_similar_words(word);
 }

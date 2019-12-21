@@ -10,6 +10,7 @@
 int substring(char *s1 , char *s2);
 void print_lines(char *word);
 void print_similar_words(char *word);
+int similar(char *original_String, char *word);
 int Length(char *s);
 
 #endif //EX3_TXTFIND_H

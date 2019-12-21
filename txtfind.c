@@ -18,6 +18,7 @@ int substring(char *s1 , char *s2){
     return 0;
 }
 
+
 /**
  * length of string
  * @param s the string
@@ -31,25 +32,38 @@ int Length(char *s){
     }
     return count;
 }
+int similar(char *original_String, char *word) {
+    if (Length(original_String) < Length(word))
+        return 0;
+
+    while (*original_String != '\0' && *word != '\0') {
+        if (*original_String != *word)
+            original_String++;
+        else {
+            word++;
+            original_String++;
+        }
+    }
+}
+
 
 /**
  * The function will print all the lines that the string word preform on them
  * */
 void print_lines(char *word){
-    char textLine[LINE];
-    while (scanf("%[^\n]%*c", textLine) != EOF)
-        if (substring(textLine, word)) printf("%s\n", textLine);
-
+    char text[LINE];
+    while (scanf("%[^\n]%*c", text) != EOF)
+        if (substring(text, word))
+            printf("%s\n", text);
 }
 
 /**
  * The function will print the similar words of the string word
  */
-void print_similar_words(char *word){
+void print_similar_words(char *keyWord) {
     char text[LINE];
-    while (scanf("%s", text) != EOF){
-        if (substring(text, word))
+    while (scanf("%s", text) != EOF) {
+        if (similar(text, keyWord) || substring(text, keyWord))
             printf("%s\n", text);
     }
-
 }
